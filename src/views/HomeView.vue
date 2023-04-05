@@ -10,14 +10,14 @@ import type { NButton } from "naive-ui";
 import { onMounted } from "vue";
 const dialog = useDialog2();
 
-const ck = () => {
-  dialog.create({
+const ck = async () => {
+  const res = await dialog.create({
     temp: "/temp/add.vue",
   });
+  console.log(res);
 };
 
-ck()
-
+ck();
 </script>
 
 <style scoped></style>

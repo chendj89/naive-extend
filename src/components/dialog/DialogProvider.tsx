@@ -39,7 +39,9 @@ export const NDialogProvider2 = defineComponent({
         destory: () => {},
       });
       dialogListRef.value.push(dialogReactive);
-      return dialogReactive;
+      return new Promise((resolve) => {
+        resolve(dialogReactive);
+      });
     };
     const api = {
       create,
@@ -59,7 +61,7 @@ export const NDialogProvider2 = defineComponent({
     console.log("--xxx", this.dialogList);
     if (this.dialogList.length) {
       return h(Fragment, null, [
-        h(Teleport, {to:'body'}, [
+        h(Teleport, { to: "body" }, [
           this.dialogList.map((item) => h(defineAsyncComponent(item.com))),
         ]),
         this.$slots.default?.(),
