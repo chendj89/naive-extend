@@ -1,9 +1,23 @@
+<template>
+  <div style="padding: 20px">
+    <NButton @click="ck">按钮</NButton>
+  </div>
+</template>
+
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import { useDialog2 } from "@/components/dialog/composables";
+import type { NButton } from "naive-ui";
+import { onMounted } from "vue";
+const dialog = useDialog2();
+
+const ck = () => {
+  dialog.create({
+    temp: "/temp/add.vue",
+  });
+};
+
+ck()
+
 </script>
 
-<template>
-  <main>
-    <TheWelcome />
-  </main>
-</template>
+<style scoped></style>
